@@ -1,12 +1,70 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+import faker from 'faker';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+import CommentDetail from './CommentDetail';
+import ApprovalCard from './ApprovalCard';
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: http://bit.ly/CRA-PWA
-serviceWorker.unregister();
+const App = () => {
+    return (
+        <div className="ui container comments">
+        <ApprovalCard>
+            <div>
+                <h3>Warning!</h3>
+                Are you sure you want to do this?
+            </div>
+            
+        </ApprovalCard>
+        <ApprovalCard >
+            <CommentDetail 
+                author={faker.name.firstName()} 
+                avatar={faker.image.avatar()} 
+                commentData={faker.commerce.department()} 
+                timeAgo="Today at 2:12" 
+            />
+        </ApprovalCard>
+        <ApprovalCard>
+            <CommentDetail 
+                author={faker.name.firstName()} 
+                avatar={faker.image.avatar()} 
+                commentData={faker.commerce.department()} 
+                timeAgo="Today at 4:12"
+            />
+        </ApprovalCard>
+        <ApprovalCard>
+            <CommentDetail 
+            author={faker.name.firstName()} 
+            avatar={faker.image.avatar()} 
+            commentData={faker.commerce.department()} 
+            timeAgo="Today at 7:12"/>
+        </ApprovalCard>
+        <ApprovalCard>
+            <CommentDetail 
+                author={faker.name.firstName()} 
+                avatar={faker.image.avatar()} 
+                commentData={faker.commerce.department()} 
+                timeAgo="Today at 12:12"/>
+        </ApprovalCard>
+        <ApprovalCard>
+            <CommentDetail 
+            author={faker.name.firstName()} 
+            avatar={faker.image.avatar()} 
+            commentData={faker.commerce.department()} 
+            timeAgo="Today at 21:12"/>
+        </ApprovalCard>
+        <ApprovalCard>
+            <CommentDetail 
+            author={faker.name.firstName()} 
+            avatar={faker.image.avatar()} 
+            commentData={faker.commerce.department()} 
+            timeAgo="Today at 22:12"/>
+        </ApprovalCard>
+        </div>
+    );
+};
+function genRandomNumber(minValue, maxValue) 
+{
+    return Math.random() * (maxValue-minValue) + minValue ;
+}
+
+ReactDOM.render(<App />, document.querySelector('#root'));
